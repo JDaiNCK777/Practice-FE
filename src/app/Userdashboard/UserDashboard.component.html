@@ -1,0 +1,9 @@
+<div class="home">
+  <h2>Now Serving</h2>
+  <div class="queue-display">{{ currentQueue }}</div>
+  <h3>Your Queue Number</h3>
+  <div class="queue-display">{{ userQueue || '--' }}</div>
+  <button class="button-main" (click)="getQueueNumber()">
+    {{ userQueue ? 'VIEW MY QUEUE STATUS' : 'GET QUEUE NUMBER' }}
+  </button>
+</div>

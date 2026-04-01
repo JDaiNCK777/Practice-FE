@@ -5,7 +5,6 @@ import { Component } from '@angular/core';
     templateUrl: './UserCreateAccount.component.html',
     styleUrl: './UserCreateAccount.component.scss'
 })
-
 export class UserCreateAccountComponent {
   email: string = '';
   password: string = '';

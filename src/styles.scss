@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff;
+  color: #400000;
+}
+// Buttons
+.button-main {
+  background-color: #8b0000;
+  color: white;
+  border-radius: 5px;
+  padding: 12px 20px;
+  font-weight: bold;
+  border: none;
+}
+// Responsive — mobile-first
+@media (max-width: 560px) {
+  .container {
+    padding: 1rem;
+  }
+  .button-main {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+  .queue-display {
+    font-size: 2rem;
+  }
+}

@@ -1,7 +1,10 @@
 import { Routes } from '@angular/router';
-import { UserCreateAccountComponent } from './Userdashboard/UserCreateAccount/UserCreateAccount.component';
+import { UserDashboardComponent } from './Userdashboard/UserDashboard.component';
+import { UserLoginComponent } from './Userdashboard/UserLogin/UserLogin.component';
 
 
 export const routes: Routes = [
-    { path: 'login', component: UserCreateAccountComponent },
+    { path: 'dashboard', component: UserDashboardComponent },
+    { path: '', component: UserLoginComponent },
+    //{ path: 'create-account', component: UserCreateAccountComponent },
 ];
