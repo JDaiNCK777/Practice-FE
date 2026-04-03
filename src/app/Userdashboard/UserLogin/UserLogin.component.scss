@@ -1,15 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 
-input {
-    font-family: 'Poppins', sans-serif;
-    padding: auto;
-    width: 250px;
-    margin-top: 10px;
-    height: 30px;
-    border-radius: 5px;
-    border-style: none;
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -36,6 +26,24 @@ input {
     height: auto;
 }
 
+.Create-Account, .Forgot-Password {
+    font-family: 'Popppins', sans-serif;
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+
+input {
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    padding: auto;
+    width: 250px;
+    margin-top: 10px;
+    height: 30px;
+    border-radius: 5px;
+    border-style: none;
+}
+
 form {
     margin-top: 150px;
     display: flex;
@@ -49,9 +57,11 @@ form {
 }
 
 button {
-    margin-top: 20px;
-    padding: 10px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
     font-size: 14px;
+    margin-top: 20px;
+    padding: 8px;
     background-color: #800000;
     color: white;
     border: none;
@@ -62,9 +72,10 @@ button {
 
 @media screen and (max-width: 376px) {
     .header {
-        height: 150px;
+        height: 145px;
     }
     form {
         margin-top: 125px;
+        padding: 18px;
     }
 }
