@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-
 @Component({
 
     selector: 'app-user-login',
@@ -10,6 +9,5 @@ import { Component } from '@angular/core';
 })
 
 export class UserLoginComponent {
-  email: string = '';
-  password: string = '';
+  // component state + constructor / methods here
 }

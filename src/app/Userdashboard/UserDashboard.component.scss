@@ -6,6 +6,7 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
+    margin-inline: auto;
 }
 
 .Queue-Card {
@@ -15,12 +16,14 @@
     border: 1px solid #000000;
     height: 40vh;
     width: 45vw;
+    margin-inline: auto;
 }
 
 .Inner-card {
     text-align: center;
     align-items: center;
     justify-content: center;
+    margin-inline: auto;
 }
 
 .Dashboard-card {
@@ -30,6 +33,7 @@
     text-align: center;
     align-items: center;
     justify-content: center;
+    margin-inline: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     height: 85vh;
     width: 65vw;
@@ -40,6 +44,7 @@
     bottom: 45px;
     right:  23.5px;
     width: 325px;
+    
 }
 
 .CurrentQueue {
@@ -81,6 +86,19 @@
 .GetNumber {
     position: relative;
     top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    background-color: #800000;
+    border: none;
+    width: 300px;
+    height: 40px;
+    color: #FFFFFF;
+    border-radius: 25px;
+}
+
+.button {
+    margin-inline: auto;
 }
 
 .NavBar-Divider {
@@ -114,11 +132,10 @@
 
 .HomeButton {
     position: relative;
-    top: 95px;
+    top: 90px;
     right: 55px;
     background-color: transparent;
     border: none;
-    display: inline-block;
 }
 
 .Queue {
@@ -137,10 +154,9 @@
 
 .QueueButton {
     position: relative;
-    top: 95px;
+    top: 90px;
     background-color: transparent;
     border: none;
-    display: inline-block;
 }
 
 .User {
@@ -159,11 +175,10 @@
 
 .UserButton {
     position: relative;
-    top: 95px;
+    top: 90px;
     left: 55px;
     background-color: transparent;
     border: none;
-    display: inline-block;
 }
 
 header {
@@ -177,7 +192,7 @@ header {
 
 h2 {
     position: relative;
-    right: 10px; 
+    right: 20px; 
 }
 
 h3 {
@@ -186,6 +201,29 @@ h3 {
     bottom: 35px;
 }
 
+
+//UNIVERSAL PHONES
+@media screen and (min-width: 455px) {
+    .NavBar-Divider {
+        width: 373px;
+    }
+
+    .Queue-Divider {
+        width: 250px;
+    }
+
+    h2 {
+        right: 15px;
+    }
+
+    h3 {
+        right: 135px;
+    }
+    
+    .Menu {
+        left: 118px;
+    }
+}
 
 //IPHONE XR
 @media screen and (max-width: 429px) {
@@ -268,7 +306,7 @@ h3 {
 }
 
 //IPHONE 12 PRO
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 391px) {
     .GetNumber {
         top: 30px;
     }
