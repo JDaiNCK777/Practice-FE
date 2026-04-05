@@ -42,23 +42,128 @@
     width: 325px;
 }
 
+.CurrentQueue {
+    position: relative;
+    background-color: #800000;
+    color: #FFFFFF;
+    width: 125px;
+    margin-inline: auto;
+    border: #F4C430 solid 4px;
+    border-radius: 25px;
+}
+
+.YourQueue {
+    position: relative;
+    background-color: #800000;
+    color: #FFFFFF;
+    width: 125px;
+    margin-inline: auto;
+    border: #F4C430 solid 4px;
+    border-radius: 25px;
+    top: 65px;
+}
+
+.CurrentQueueNu {
+    font-weight: 500;
+}
+
+.YourQueueNum {
+    font-weight: 500;
+}
+
 .Queue-Divider {
     position: relative;
-    top: 125px;
+    top: 35px;
     width: 240px;
-    right: 23.5px;
+    right: 24px;
+}
+
+.GetNumber {
+    position: relative;
+    top: 50px;
 }
 
 .NavBar-Divider {
     position: relative;
-    top: 125px;
+    top: 100px;
     right: 40px;
     width: 359px;
 }
 
+.Menu {
+    position: relative;
+    left: 104px;
+    height: 30px;
+    width: 30px;
+    margin-top: 24px;
+}
+
 .Home {
     position: relative;
-    bottom: 50px;
+    top: 10px;
+    width: 40px;
+    height: 40px;
+}
+
+.HomeTitle {
+    position: relative;
+    bottom: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.HomeButton {
+    position: relative;
+    top: 95px;
+    right: 55px;
+    background-color: transparent;
+    border: none;
+    display: inline-block;
+}
+
+.Queue {
+    position: relative;
+    top: 10px;
+    width: 40px;
+    height: 40px; 
+}
+
+.QueueTitle {
+    position: relative;
+    bottom: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.QueueButton {
+    position: relative;
+    top: 95px;
+    background-color: transparent;
+    border: none;
+    display: inline-block;
+}
+
+.User {
+    position: relative;
+    top: 10px;
+    width: 40px;
+    height: 40px;
+}
+
+.UserTitle {
+    position: relative;
+    bottom: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.UserButton {
+    position: relative;
+    top: 95px;
+    left: 55px;
+    background-color: transparent;
+    border: none;
+    display: inline-block;
 }
 
 header {
@@ -81,17 +186,164 @@ h3 {
     bottom: 35px;
 }
 
-svg {
-    position: relative;
-    left: 104px;
-    height: 30px;
-    width: 30px;
-    margin-top: 24px;
-}
 
-@media screen and (max-width: 376px) {
+//IPHONE XR
+@media screen and (max-width: 429px) {
+    .GetNumber {
+        top: 30px;
+    }
+
     .Dashboard-card {
         width: 65vw;
-        height: 75vh;
+        height: 80vh;
     }
+
+    .Queue-Divider {
+        width: 233px;
+    }
+
+    .divider {
+        width: 315px;
+    }
+
+    .NavBar-Divider {
+        position: relative;
+        right: 40px;
+        top: 58px;
+        bottom: 10px;
+        width: 349px;
+    }
+
+    h3 {
+        right: 120px;
+    }
+
+    h2 {
+        right: 20px;
+    }
+
+    .Menu {
+        left: 95px;
+    }
+
+    .Home {
+        width: 38px;
+        height: 38px;
+    }
+
+    .HomeTitle {
+        font-size: 14px;
+    }
+    
+    .HomeButton {
+        top: 48px;
+    }
+
+    .Queue {
+        width: 38px;
+        height: 38px;
+    }
+
+    .QueueTitle {
+        font-size: 14px;
+    }
+
+    .QueueButton {
+        top: 48px;
+    }
+
+    .User {
+        width: 38px;
+        height: 38px;
+    }
+
+    .UserTitle {
+        font-size: 14px;
+    }
+
+    .UserButton {
+        top: 48px;
+    }
+
 }
+
+//IPHONE 12 PRO
+@media screen and (max-width: 390px) {
+    .GetNumber {
+        top: 30px;
+    }
+
+    .Dashboard-card {
+        width: 65vw;
+        height: 81vh;
+    }
+
+    .Queue-Divider {
+        width: 222px;
+    }
+
+    .divider {
+        width: 300px;
+    }
+
+    .NavBar-Divider {
+        position: relative;
+        right: 40px;
+        top: 58px;
+        bottom: 10px;
+        width: 333px;
+    }
+
+    h3 {
+        right: 110px;
+    }
+
+    h2 {
+        right: 20px;
+    }
+
+    .Menu {
+        left: 80px;
+    }
+
+    .Home {
+        width: 34px;
+        height: 34px;
+    }
+
+    .HomeTitle {
+        font-size: 14px;
+    }
+    
+    .HomeButton {
+        top: 44px;
+    }
+
+    .Queue {
+        width: 34px;
+        height: 34px;
+    }
+
+    .QueueTitle {
+        font-size: 14px;
+    }
+
+    .QueueButton {
+        top: 44px;
+    }
+
+    .User {
+        width: 34px;
+        height: 34px;
+    }
+
+    .UserTitle {
+        font-size: 14px;
+    }
+
+    .UserButton {
+        top: 44px;
+    }
+
+}
+
