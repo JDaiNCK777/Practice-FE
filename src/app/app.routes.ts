@@ -8,10 +8,10 @@ import { UserGuideComponent } from './Userdashboard/UserGuide/UserGuide.componen
 
 
 export const routes: Routes = [
-    { path: 'home', component: UserDashboardComponent },
+    { path: '', component: UserDashboardComponent },
     { path: 'login', component: UserLoginComponent },
     { path: 'createuser', component: UserCreateAccountComponent },
-    { path: '', component: UserMyQueueComponent },
+    { path: 'myqueue', component: UserMyQueueComponent },
     { path: 'help', component: UserHelpComponent},
     { path: 'guide', component: UserGuideComponent }
 ];
