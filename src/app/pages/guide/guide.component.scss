@@ -1,0 +1,28 @@
+.guide-page {
+  padding: 0 20px 40px;
+  background: #fff;
+  min-height: 100vh;
+}
+
+.page-title {
+  font-size: 20px;
+  font-weight: 700;
+  padding: 16px 0 8px;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 20px;
+}
+
+.guide-list {
+  list-style: decimal;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.guide-item {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #222;
+  font-weight: 600;
+}

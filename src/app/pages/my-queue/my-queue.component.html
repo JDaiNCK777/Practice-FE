@@ -1,0 +1,48 @@
+<app-navbar (toggleMenu)="menuOpen.set(true)" />
+<app-side-menu [open]="menuOpen()" (close)="menuOpen.set(false)" />
+
+<main class="page-container">
+  <h2 class="page-title">My Queue</h2>
+
+  <div class="queue-card" *ngIf="!loading()">
+
+    <!-- Current Queue Info -->
+    <div *ngIf="current; else noQueue">
+      <p class="info-row"><strong>Queue Number:</strong> {{ current.queueNumber }}</p>
+      <p class="info-row"><strong>Counter:</strong> {{ current.counter }}</p>
+      <p class="info-row"><strong>Time Joined:</strong> {{ current.timeJoined }}</p>
+      <p class="info-row">
+        <strong>Status:</strong>
+        <span class="status-dot" [ngClass]="statusClass(current.status)"></span>
+        <span [ngClass]="statusClass(current.status)" class="status-label">
+          {{ statusLabel(current.status) }}
+        </span>
+      </p>
+    </div>
+
+    <ng-template #noQueue>
+      <p class="no-queue">You have no active queue. Go to Home to get a number.</p>
+    </ng-template>
+
+    <hr class="divider" *ngIf="history.length > 0" />
+
+    <!-- Queue History -->
+    <div class="history-section" *ngIf="history.length > 0">
+      <p class="history-title">Queue History:</p>
+      <div class="history-list">
+        <div class="history-item" *ngFor="let item of history">
+          <span class="history-num">Queue {{ item.queueNumber }}:</span>
+          <span class="status-dot" [ngClass]="statusClass(item.status)"></span>
+          <span [ngClass]="statusClass(item.status)" class="history-status">
+            {{ statusLabel(item.status) }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="loading-state" *ngIf="loading()">Loading queue...</div>
+</main>
+
+<app-bottom-nav />

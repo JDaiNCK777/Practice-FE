@@ -1,0 +1,12 @@
+<app-navbar [showBack]="true" (toggleMenu)="menuOpen.set(true)" />
+<app-side-menu [open]="menuOpen()" (close)="menuOpen.set(false)" />
+
+<main class="page-container guide-page">
+  <h2 class="page-title">Guide</h2>
+
+  <ol class="guide-list">
+    <li *ngFor="let step of steps" class="guide-item">
+      {{ step.text }}
+    </li>
+  </ol>
+</main>

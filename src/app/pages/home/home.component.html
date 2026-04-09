@@ -1,0 +1,53 @@
+<p>home works!</p>
+<app-navbar (toggleMenu)="menuOpen.set(true)" />
+<app-side-menu [open]="menuOpen()" (close)="menuOpen.set(false)" />
+
+<main class="page-container">
+  <h2 class="page-title">Home</h2>
+
+  <div class="queue-card" *ngIf="!loading(); else loadingTpl">
+
+    <!-- Now Serving -->
+    <div class="queue-section">
+      <p class="section-label">Now Serving:</p>
+      <div class="badge-wrapper">
+        <div class="queue-badge">
+          {{ state.nowServing ?? '---' }}
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- My Queue Number -->
+    <div class="queue-section">
+      <p class="section-label">Your Queue Number:</p>
+      <div class="badge-wrapper">
+        <div class="queue-badge" [class.empty]="!state.myQueueNumber">
+          {{ state.myQueueNumber ?? '' }}
+        </div>
+      </div>
+
+      <div class="queue-meta" *ngIf="state.myQueueNumber">
+        <p>People Ahead: <strong>{{ state.peopleAhead }}</strong></p>
+        <p>Estimated Wait Time: <strong>{{ state.estimatedWaitMinutes }} minutes</strong></p>
+      </div>
+
+      <p class="no-queue-msg" *ngIf="!state.queueAvailable">
+        There Are No Queue Number's Available
+      </p>
+    </div>
+
+  </div>
+
+  <ng-template #loadingTpl>
+    <div class="loading-state">Loading queue info...</div>
+  </ng-template>
+
+  <!-- CTA Button -->
+  <button class="cta-btn" (click)="onActionButton()" [disabled]="actionLoading() || !state.queueAvailable && !state.myQueueNumber">
+    {{ actionLoading() ? 'Please wait...' : (state.myQueueNumber ? 'VIEW MY QUEUE STATUS' : 'GET QUEUE NUMBER') }}
+  </button>
+</main>
+
+<app-bottom-nav />

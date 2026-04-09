@@ -1,0 +1,163 @@
+<div class="signup-page">
+  <div class="top-bar"></div>
+
+  <div class="form-card">
+    <div class="card-header">
+      <button class="back-btn" routerLink="/login">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M19 12H5M5 12l7-7M5 12l7 7"/>
+        </svg>
+      </button>
+      <h2>Create Account</h2>
+    </div>
+
+    <div class="field">
+      <span class="field-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+        </svg>
+      </span>
+      <input type="text" placeholder="Full Name" [(ngModel)]="fullName" />
+    </div>
+
+    <div class="field">
+      <span class="field-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2">
+          <rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 8h2m0 0h6m-6 0v8m6-8v8M7 16h2m4 0h2"/>
+        </svg>
+      </span>
+      <input type="text" placeholder="Student ID" [(ngModel)]="studentId" />
+    </div>
+
+    <div class="field">
+      <span class="field-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+      </span>
+      <input type="email" placeholder="Email" [(ngModel)]="email" />
+    </div>
+
+    <div class="field">
+      <span class="field-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2">
+          <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+      </span>
+      <input [type]="showPassword ? 'text' : 'password'" placeholder="Password" [(ngModel)]="password" />
+      <button class="eye-btn" type="button" (click)="showPassword = !showPassword">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="field">
+      <span class="field-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2">
+          <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+      </span>
+      <input [type]="showConfirm ? 'text' : 'password'" placeholder="Confirm Password" [(ngModel)]="confirmPassword" />
+      <button class="eye-btn" type="button" (click)="showConfirm = !showConfirm">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+      </button>
+    </div>
+
+    <p class="error-msg" *ngIf="error()">{{ error() }}</p>
+
+    <button class="btn-primary" (click)="onSignup()" [disabled]="loading()">
+      {{ loading() ? 'Creating...' : 'Create Account' }}
+    </button>
+
+    <p class="login-link">
+      Already Have an Account? <a routerLink="/login">Login</a>
+    </p>
+  </div>
+</div><div class="signup-page">
+  <div class="top-bar"></div>
+
+  <div class="form-card">
+    <div class="card-header">
+      <button class="back-btn" routerLink="/login">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M19 12H5M5 12l7-7M5 12l7 7"/>
+        </svg>
+      </button>
+      <h2>Create Account</h2>
+    </div>
+
+    <div class="field">
+      <span class="field-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+        </svg>
+      </span>
+      <input type="text" placeholder="Full Name" [(ngModel)]="fullName" />
+    </div>
+
+    <div class="field">
+      <span class="field-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2">
+          <rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 8h2m0 0h6m-6 0v8m6-8v8M7 16h2m4 0h2"/>
+        </svg>
+      </span>
+      <input type="text" placeholder="Student ID" [(ngModel)]="studentId" />
+    </div>
+
+    <div class="field">
+      <span class="field-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+      </span>
+      <input type="email" placeholder="Email" [(ngModel)]="email" />
+    </div>
+
+    <div class="field">
+      <span class="field-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2">
+          <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+      </span>
+      <input [type]="showPassword ? 'text' : 'password'" placeholder="Password" [(ngModel)]="password" />
+      <button class="eye-btn" type="button" (click)="showPassword = !showPassword">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="field">
+      <span class="field-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2">
+          <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+      </span>
+      <input [type]="showConfirm ? 'text' : 'password'" placeholder="Confirm Password" [(ngModel)]="confirmPassword" />
+      <button class="eye-btn" type="button" (click)="showConfirm = !showConfirm">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+      </button>
+    </div>
+
+    <p class="error-msg" *ngIf="error()">{{ error() }}</p>
+
+    <button class="btn-primary" (click)="onSignup()" [disabled]="loading()">
+      {{ loading() ? 'Creating...' : 'Create Account' }}
+    </button>
+
+    <p class="login-link">
+      Already Have an Account? <a routerLink="/login">Login</a>
+    </p>
+  </div>
+</div>

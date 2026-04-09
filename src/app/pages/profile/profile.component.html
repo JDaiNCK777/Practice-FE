@@ -1,0 +1,57 @@
+<p>profile works!</p>
+<app-navbar (toggleMenu)="menuOpen.set(true)" />
+<app-side-menu [open]="menuOpen()" (close)="menuOpen.set(false)" />
+
+<main class="page-container">
+  <h2 class="page-title">Profile</h2>
+
+  <div class="profile-card">
+    <!-- Profile header banner -->
+    <div class="profile-banner">
+      <div class="avatar">
+        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.5">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+      </div>
+    </div>
+
+    <h3 class="student-name">{{ user?.fullName ?? 'Student Name' }}</h3>
+
+    <div class="info-header">
+      <span>Student Information</span>
+      <button class="edit-btn" (click)="editMode.set(!editMode())">
+        {{ editMode() ? 'Cancel' : 'Edit Information' }}
+      </button>
+    </div>
+
+    <!-- View Mode -->
+    <div class="info-table" *ngIf="!editMode()">
+      <div class="info-row"><span>Age:</span><span>{{ user?.age ?? '' }}</span></div>
+      <div class="info-row"><span>Sex:</span><span>{{ user?.sex ?? '' }}</span></div>
+      <div class="info-row"><span>Student ID:</span><span>{{ user?.studentId ?? '' }}</span></div>
+      <div class="info-row"><span>Birthday:</span><span>{{ user?.birthday ?? '' }}</span></div>
+      <div class="info-row last"><span>Course & Year:</span><span>{{ user?.courseYear ?? '' }}</span></div>
+    </div>
+
+    <!-- Edit Mode -->
+    <div class="edit-form" *ngIf="editMode()">
+      <div class="edit-row"><label>Age</label><input type="number" [(ngModel)]="age" /></div>
+      <div class="edit-row"><label>Sex</label>
+        <select [(ngModel)]="sex">
+          <option value="">Select</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="edit-row"><label>Birthday</label><input type="date" [(ngModel)]="birthday" /></div>
+      <div class="edit-row"><label>Course & Year</label><input type="text" [(ngModel)]="courseYear" /></div>
+      <button class="btn-primary save-btn" (click)="saveProfile()" [disabled]="saving()">
+        {{ saving() ? 'Saving...' : 'Save Changes' }}
+      </button>
+    </div>
+  </div>
+</main>
+
+<app-bottom-nav />

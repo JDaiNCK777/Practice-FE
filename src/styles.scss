@@ -25,3 +25,97 @@ body {
     font-size: 2rem;
   }
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary:       #8B0000;
+  --primary-dark:  #6B0000;
+  --primary-light: #A50000;
+  --gold:          #D4A017;
+  --gold-border:   #C8941A;
+  --bg:            #F5F5F5;
+  --white:         #FFFFFF;
+  --text:          #1A1A1A;
+  --text-muted:    #666666;
+  --border:        #E0E0E0;
+  --card-bg:       #FAFAFA;
+  --status-green:  #28A745;
+  --status-orange: #FFA500;
+  --status-red:    #DC3545;
+  --status-grey:   #999999;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Mobile wrapper — simulates phone viewport on desktop */
+.mobile-shell {
+  max-width: 430px;
+  min-height: 100vh;
+  margin: 0 auto;
+  background: var(--white);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Shared page container ── */
+.page-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding-bottom: 80px; /* space for bottom nav */
+}
+
+.page-title {
+  font-size: 20px;
+  font-weight: 700;
+  padding: 16px 20px 8px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 16px;
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.2s;
+
+  &:hover { background: var(--primary-dark); }
+  &:disabled { background: #ccc; cursor: not-allowed; }
+}
+
+/* ── Queue number badge ── */
+.queue-badge {
+  background: var(--primary);
+  border: 3px solid var(--gold-border);
+  border-radius: 16px;
+  color: var(--white);
+  font-size: 52px;
+  font-weight: 800;
+  text-align: center;
+  padding: 20px 40px;
+  min-width: 180px;
+  display: inline-block;
+}
