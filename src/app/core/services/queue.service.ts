@@ -6,7 +6,7 @@ import { WebSocketService } from './websocket.service';
 
 @Injectable({ providedIn: 'root' })
 export class QueueService {
-  private API = 'http://localhost:8080/api';
+  private API = 'http://localhost:3000/api';
 
   homeState = signal<HomeState>({
     nowServing: null,
@@ -24,7 +24,7 @@ export class QueueService {
   }
 
   private listenToWebSocket(): void {
-    this.ws.messages$.subscribe(msg => {
+    this.ws.messages$.subscribe((msg: any) => {
       switch (msg.type) {
         case 'now_serving':
           this.homeState.update(s => ({ ...s, nowServing: msg.payload.number }));
@@ -32,18 +32,14 @@ export class QueueService {
         case 'queue_update':
           this.homeState.update(s => ({
             ...s,
-            peopleAhead: msg.payload.peopleAhead,
-            estimatedWaitMinutes: msg.payload.estimatedWait,
-            queueAvailable: msg.payload.queueAvailable
+            peopleAhead: msg.payload.peopleAhead ?? s.peopleAhead,
+            estimatedWaitMinutes: msg.payload.estimatedWait ?? s.estimatedWaitMinutes,
+            queueAvailable: msg.payload.queueAvailable ?? s.queueAvailable
           }));
           break;
         case 'queue_assigned':
-          this.homeState.update(s => ({ ...s, myQueueNumber: msg.payload.number }));
+          this.homeState.update(s => ({ ...s, myQueueNumber: msg.payload.queueNumber }));
           this.currentQueue.set(msg.payload);
-          break;
-        case 'queue_cancelled':
-          this.homeState.update(s => ({ ...s, myQueueNumber: null }));
-          this.currentQueue.set(null);
           break;
       }
     });
@@ -65,9 +61,7 @@ export class QueueService {
     return this.http.get<QueueEntry | null>(`${this.API}/queue/current`).pipe(
       tap(q => {
         this.currentQueue.set(q);
-        if (q) {
-          this.homeState.update(s => ({ ...s, myQueueNumber: q.queueNumber }));
-        }
+        if (q) this.homeState.update(s => ({ ...s, myQueueNumber: q.queueNumber }));
       })
     );
   }
@@ -79,9 +73,5 @@ export class QueueService {
         this.homeState.update(s => ({ ...s, myQueueNumber: q.queueNumber }));
       })
     );
-  }
-
-  viewQueueStatus(): Observable<QueueEntry> {
-    return this.http.get<QueueEntry>(`${this.API}/queue/status`);
   }
 }

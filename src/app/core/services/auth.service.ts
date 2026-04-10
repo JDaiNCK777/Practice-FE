@@ -6,8 +6,7 @@ import { User } from '../models/queue.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private API = 'http://localhost:8080/api';
-
+  private API = 'http://localhost:3000/api';
   currentUser = signal<User | null>(null);
   isLoggedIn = signal<boolean>(false);
 
@@ -54,7 +53,7 @@ export class AuthService {
   }
 
   updateProfile(data: Partial<User>): Observable<User> {
-    return this.http.put<User>(`${this.API}/user/profile`, data).pipe(
+    return this.http.put<User>(`${this.API}/auth/profile`, data).pipe(
       tap(updated => {
         this.currentUser.set(updated);
         localStorage.setItem('qjump_user', JSON.stringify(updated));

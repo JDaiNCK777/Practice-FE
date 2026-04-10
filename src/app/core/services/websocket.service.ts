@@ -1,59 +1,56 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { Subject, Observable, timer, EMPTY } from 'rxjs';
-import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
-import { catchError, switchAll, tap, retryWhen, delay } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 export interface WsMessage {
-  type: 'queue_update' | 'now_serving' | 'queue_assigned' | 'queue_cancelled' | 'ping';
+  type: string;
   payload: any;
 }
 
 @Injectable({ providedIn: 'root' })
 export class WebSocketService implements OnDestroy {
-  private socket$: WebSocketSubject<WsMessage> | null = null;
-  private messagesSubject$ = new Subject<Observable<WsMessage>>();
-  public messages$ = this.messagesSubject$.pipe(switchAll());
-
-  private WS_URL = 'ws://localhost:8080/ws/queue';
+  private socket: WebSocket | null = null;
+  private messageSubject = new Subject<WsMessage>();
+  public messages$ = this.messageSubject.asObservable();
+  private reconnectTimer: any;
 
   connect(): void {
-    if (this.socket$) return;
+    const token = localStorage.getItem('qjump_token');
+    const url = token
+      ? `ws://localhost:3000/ws/queue?token=${token}`
+      : `ws://localhost:3000/ws/queue`;
 
-    this.socket$ = webSocket<WsMessage>({
-      url: this.WS_URL,
-      openObserver: {
-        next: () => console.log('[WS] Connected')
-      },
-      closeObserver: {
-        next: () => {
-          console.log('[WS] Disconnected');
-          this.socket$ = null;
-        }
+    if (this.socket?.readyState === WebSocket.OPEN) return;
+
+    this.socket = new WebSocket(url);
+
+    this.socket.onopen = () => {
+      console.log('[WS] Connected');
+      clearTimeout(this.reconnectTimer);
+    };
+
+    this.socket.onmessage = (event) => {
+      try {
+        const msg: WsMessage = JSON.parse(event.data);
+        this.messageSubject.next(msg);
+      } catch (e) {
+        console.error('[WS] Parse error', e);
       }
-    });
+    };
 
-    this.messagesSubject$.next(
-      this.socket$.pipe(
-        tap(msg => console.log('[WS] Received:', msg)),
-        catchError(err => {
-          console.error('[WS] Error:', err);
-          return EMPTY;
-        })
-      )
-    );
-  }
+    this.socket.onclose = () => {
+      console.log('[WS] Disconnected — reconnecting in 3s...');
+      this.reconnectTimer = setTimeout(() => this.connect(), 3000);
+    };
 
-  sendMessage(msg: WsMessage): void {
-    if (this.socket$) {
-      this.socket$.next(msg);
-    }
+    this.socket.onerror = (err) => {
+      console.error('[WS] Error', err);
+    };
   }
 
   disconnect(): void {
-    if (this.socket$) {
-      this.socket$.complete();
-      this.socket$ = null;
-    }
+    clearTimeout(this.reconnectTimer);
+    this.socket?.close();
+    this.socket = null;
   }
 
   ngOnDestroy(): void {
